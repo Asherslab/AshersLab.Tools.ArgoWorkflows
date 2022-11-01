@@ -4,10 +4,13 @@
     <projectFile>Qube.Tools.ArgoWorkflows/Qube.Tools.ArgoWorkflows.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc396723-7e55-46ae-bdd1-2d43c7f99ded" name="Changes" comment="fix git secret name">
+    <list default="true" id="fc396723-7e55-46ae-bdd1-2d43c7f99ded" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Qube.Tools.ArgoWorkflows/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Qube.Tools.ArgoWorkflows/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AshersLab.Tools.ArgoWorkflows.Kubernetes/Builders/Workflows/WorkflowBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AshersLab.Tools.ArgoWorkflows.Kubernetes/Builders/Workflows/WorkflowBuilder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AshersLab.Tools.ArgoWorkflows.Kubernetes/Models/ResourceSpecs/Workflows/WorkflowSpec.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AshersLab.Tools.ArgoWorkflows.Kubernetes/Models/ResourceSpecs/Workflows/WorkflowSpec.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AshersLab.Tools.ArgoWorkflows/Configuration/RunConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AshersLab.Tools.ArgoWorkflows/Configuration/RunConfig.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AshersLab.Tools.ArgoWorkflows/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AshersLab.Tools.ArgoWorkflows/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AshersLab.Tools.ArgoWorkflows/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/AshersLab.Tools.ArgoWorkflows/appsettings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +18,8 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Users/asherslab/Documents/Git/AshersLab.Tools.ArgoWorkflows/AshersLab.Tools.ArgoWorkflows/Configuration/RunConfig.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/asherslab/Documents/Git/AshersLab.Tools.ArgoWorkflows/AshersLab.Tools.ArgoWorkflows/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/asherslab/Documents/Git/AshersLab.Tools.ArgoWorkflows/AshersLab.Tools.ArgoWorkflows/Services/BuildSteps/CheckoutBuildStepService.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -37,10 +42,10 @@
   }
 }</component>
   <component name="RunManager">
-    <configuration name="Qube.Tools.ArgoWorkflows" type="DotNetProject" factoryName=".NET Project">
-      <option name="EXE_PATH" value="" />
+    <configuration name="Testing" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/AshersLab.Tools.ArgoWorkflows/bin/Debug/net6.0/AshersLab.Tools.ArgoWorkflows" />
       <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/AshersLab.Tools.ArgoWorkflows/bin/Debug/net6.0" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="USE_MONO" value="0" />
@@ -50,7 +55,7 @@
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
       <option name="PROJECT_KIND" value="DotNetCore" />
-      <option name="PROJECT_TFM" value="" />
+      <option name="PROJECT_TFM" value="net6.0" />
       <method v="2">
         <option name="Build" />
       </method>

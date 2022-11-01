@@ -20,4 +20,5 @@ public class RunConfig
     public ImagesConfig? Images { get; set; } = new();
 
     public int PersistentVolumeSize { get; set; } = 100;
+    public int? MaxParallelism       { get; set; }
 }

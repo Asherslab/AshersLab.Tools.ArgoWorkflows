@@ -16,6 +16,7 @@ public class WorkflowBuilder : NestedBuilder<KubernetesResourceBuilder>, IBuilde
     private ArgumentsBuilder?                                   _workflowArgumentsBuilder;
     private ICollection<IBuilder<WorkflowVolumeClaimTemplate>>? _workflowVolumesBuilder;
     private ICollection<IBuilder<IWorkflowTemplate>>?           _workflowTemplatesBuilder;
+    private int?                                                _parallelism;
 
     public WorkflowBuilder(KubernetesResourceBuilder parent) : base(parent)
     {
@@ -31,6 +32,12 @@ public class WorkflowBuilder : NestedBuilder<KubernetesResourceBuilder>, IBuilde
     {
         _workflowArgumentsBuilder = new ArgumentsBuilder(this);
         return _workflowArgumentsBuilder;
+    }
+
+    public WorkflowBuilder SetParallelism(int? parallelism)
+    {
+        _parallelism = parallelism;
+        return this;
     }
 
     public WorkflowBuilder AddArgumentsParameter(string name, string value)
@@ -88,11 +95,15 @@ public class WorkflowBuilder : NestedBuilder<KubernetesResourceBuilder>, IBuilde
         if (workflowTemplates.All(x => x.Name != _entrypoint))
             throw new InvalidOperationException("No Workflow Templates matching the Entrypoint");
 
+        if (_parallelism is < 1)
+            throw new InvalidOperationException("Parallelism must be higher than 0");
+
         return new WorkflowSpec(
             _entrypoint,
             _workflowArgumentsBuilder?.Build(),
             _workflowVolumesBuilder?.Select(x => x.Build()),
-            workflowTemplates
+            workflowTemplates,
+            _parallelism
         );
     }
 }

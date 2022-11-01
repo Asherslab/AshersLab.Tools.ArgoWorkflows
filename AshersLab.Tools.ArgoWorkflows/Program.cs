@@ -55,6 +55,7 @@ KubernetesResourceBuilder resourceBuilder = new KubernetesResourceBuilder()
 // setup workflow
 WorkflowBuilder workflowBuilder = resourceBuilder.SetAsWorkflow()
     .SetEntrypoint("execute")
+    .SetParallelism(runConfig.MaxParallelism)
     .AddArgumentsParameter("hash", runConfig.TargetHash ?? "")
     .AddArgumentsParameter("src_repo", runConfig.SourceRepo ?? "")
     .AddWorkflowVolume()

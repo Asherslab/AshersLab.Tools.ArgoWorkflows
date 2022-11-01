@@ -16,16 +16,21 @@ public class WorkflowSpec : IResourceSpec
 
     [JsonPropertyName("templates")]
     public IEnumerable<object> Templates { get; }
-
+    
+    [JsonPropertyName("parallelism")]
+    public int? Parallelism { get; }
+    
     public WorkflowSpec(
         string                                    entrypoint,
         WorkflowArguments?                        arguments,
         IEnumerable<WorkflowVolumeClaimTemplate>? volumeClaimTemplates,
-        IEnumerable<IWorkflowTemplate>           templates)
+        IEnumerable<IWorkflowTemplate>           templates,
+        int? parallelism = null)
     {
         Entrypoint = entrypoint;
         Arguments = arguments;
         VolumeClaimTemplates = volumeClaimTemplates;
         Templates = templates;
+        Parallelism = parallelism;
     }
 }
