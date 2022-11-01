@@ -28,7 +28,7 @@ public class CheckoutBuildStepService : IBuildStepService
                     .SetSpec()
                         .SetIgnoreHostKey()
                         .SetRepository("{{workflow.parameters.src_repo}}")
-                        .SetSshPrivateKeySecret("gitea-secret", "ssh-privatekey")
+                        .SetSshPrivateKeySecret("git-secret", "ssh-privatekey")
                         .Up()
                     .Up()
                 .Up()

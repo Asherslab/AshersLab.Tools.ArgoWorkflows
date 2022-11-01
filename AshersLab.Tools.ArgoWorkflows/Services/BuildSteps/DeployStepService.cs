@@ -46,13 +46,13 @@ public class DeployStepService : IBuildStepService
                         .SetSpec()
                             .SetIgnoreHostKey()
                             .SetRepository(repo)
-                            .SetSshPrivateKeySecret("gitea-secret", "ssh-privatekey")
+                            .SetSshPrivateKeySecret("git-secret", "ssh-privatekey")
                             .Up()
                         .Up()
                     .Up()
                 .AddVolume()
                     .SetName("gitea-key")
-                    .SetSecret("gitea-secret")
+                    .SetSecret("git-secret")
                     .Up()
                 .SetScript();
             // @formatter:on
