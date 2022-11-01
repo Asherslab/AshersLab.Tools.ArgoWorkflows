@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="LibGit2Sharp" Version="0.26.2" />
+        <PackageReference Include="Microsoft.Build" Version="17.2.0" />
+        <PackageReference Include="Microsoft.Build.Utilities.Core" Version="17.2.0" />
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <ProjectReference Include="..\AshersLab.Tools.ArgoWorkflows.Kubernetes\AshersLab.Tools.ArgoWorkflows.Kubernetes.csproj" />
+    </ItemGroup>
+
+    <PropertyGroup>
+        <DockerFile>published.Dockerfile</DockerFile>
+        <DockerImageName>asherslab/argo-workflows:latest</DockerImageName>
+        <DockerImageName>asherslab/argo-workflows:{{workflow.parameters.hash}}</DockerImageName>
+
+        <DeploymentRepo>git@github.com:Asherslab/k8s.git</DeploymentRepo>
+        <DeploymentRepoDirectory>workflows</DeploymentRepoDirectory>
+        <DeploymentImage>asherslab/argo-workflows:{{workflow.parameters.hash}}</DeploymentImage>
+        <DeploymentImageReplacement>asherslab/argo-workflows:latest</DeploymentImageReplacement>
+    </PropertyGroup>
+    
+    <ItemGroup>
+      <None Update="appsettings.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
+</Project>
