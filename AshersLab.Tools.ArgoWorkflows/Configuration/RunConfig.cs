@@ -18,4 +18,6 @@ public class RunConfig
     public string GitDeployCommitEmail { get; set; }
 
     public ImagesConfig? Images { get; set; } = new();
+
+    public int PersistentVolumeSize { get; set; } = 100;
 }

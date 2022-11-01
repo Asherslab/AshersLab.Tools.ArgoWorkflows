@@ -4,15 +4,18 @@
     <projectFile>Qube.Tools.ArgoWorkflows/Qube.Tools.ArgoWorkflows.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc396723-7e55-46ae-bdd1-2d43c7f99ded" name="Changes" comment="init">
+    <list default="true" id="fc396723-7e55-46ae-bdd1-2d43c7f99ded" name="Changes" comment="fix git secret name">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Qube.Tools.ArgoWorkflows/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Qube.Tools.ArgoWorkflows/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AshersLab.Tools.ArgoWorkflows/Services/BuildSteps/CheckoutBuildStepService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AshersLab.Tools.ArgoWorkflows/Services/BuildSteps/CheckoutBuildStepService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AshersLab.Tools.ArgoWorkflows/Services/BuildSteps/DeployStepService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AshersLab.Tools.ArgoWorkflows/Services/BuildSteps/DeployStepService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AshersLab.Tools.ArgoWorkflows/Configuration/RunConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AshersLab.Tools.ArgoWorkflows/Configuration/RunConfig.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AshersLab.Tools.ArgoWorkflows/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AshersLab.Tools.ArgoWorkflows/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Users/asherslab/Documents/Git/AshersLab.Tools.ArgoWorkflows/AshersLab.Tools.ArgoWorkflows/Services/BuildSteps/CheckoutBuildStepService.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -62,7 +65,7 @@
       <option name="presentableId" value="Default" />
       <updated>1667268897616</updated>
       <workItem from="1667268904531" duration="2993000" />
-      <workItem from="1667272941290" duration="1890000" />
+      <workItem from="1667272941290" duration="2756000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1667275795608</created>
@@ -71,7 +74,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667275795608</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="fix git secret name">
+      <created>1667276752631</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1667276752631</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -93,6 +103,7 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="init" />
-    <option name="LAST_COMMIT_MESSAGE" value="init" />
+    <MESSAGE value="fix git secret name" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix git secret name" />
   </component>
 </project>

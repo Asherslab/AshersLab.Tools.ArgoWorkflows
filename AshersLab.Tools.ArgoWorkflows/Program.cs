@@ -63,7 +63,7 @@ WorkflowBuilder workflowBuilder = resourceBuilder.SetAsWorkflow()
             .Up()
         .SetVolumeClaim()
             .AddAccessMode(AccessModes.ReadWriteOnce)
-            .SetResources(25, StorageSizes.Mi)
+            .SetResources(runConfig.PersistentVolumeSize, StorageSizes.Mi)
             .Up()
         .Up();
 // @formatter:on
