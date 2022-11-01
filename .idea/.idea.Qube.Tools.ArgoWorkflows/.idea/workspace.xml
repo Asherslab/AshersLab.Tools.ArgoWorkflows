@@ -4,13 +4,11 @@
     <projectFile>Qube.Tools.ArgoWorkflows/Qube.Tools.ArgoWorkflows.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc396723-7e55-46ae-bdd1-2d43c7f99ded" name="Changes" comment="">
+    <list default="true" id="fc396723-7e55-46ae-bdd1-2d43c7f99ded" name="Changes" comment="add parallelism">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Qube.Tools.ArgoWorkflows/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Qube.Tools.ArgoWorkflows/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AshersLab.Tools.ArgoWorkflows.Kubernetes/Builders/Workflows/WorkflowBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AshersLab.Tools.ArgoWorkflows.Kubernetes/Builders/Workflows/WorkflowBuilder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AshersLab.Tools.ArgoWorkflows.Kubernetes/Models/ResourceSpecs/Workflows/WorkflowSpec.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AshersLab.Tools.ArgoWorkflows.Kubernetes/Models/ResourceSpecs/Workflows/WorkflowSpec.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AshersLab.Tools.ArgoWorkflows.Kubernetes/Models/ResourceSpecs/VolumeClaims/AccessModes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AshersLab.Tools.ArgoWorkflows.Kubernetes/Models/ResourceSpecs/VolumeClaims/AccessModes.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AshersLab.Tools.ArgoWorkflows/Configuration/RunConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AshersLab.Tools.ArgoWorkflows/Configuration/RunConfig.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AshersLab.Tools.ArgoWorkflows/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AshersLab.Tools.ArgoWorkflows/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AshersLab.Tools.ArgoWorkflows/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/AshersLab.Tools.ArgoWorkflows/appsettings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +84,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667276752631</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add parallelism">
+      <created>1667292630249</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1667292630249</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -109,6 +114,7 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="init" />
     <MESSAGE value="fix git secret name" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix git secret name" />
+    <MESSAGE value="add parallelism" />
+    <option name="LAST_COMMIT_MESSAGE" value="add parallelism" />
   </component>
 </project>

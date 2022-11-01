@@ -5,5 +5,6 @@ namespace AshersLab.Tools.ArgoWorkflows.Kubernetes.Models.ResourceSpecs.VolumeCl
 [JsonConverter(typeof(JsonStringEnumConverter))]
 public enum AccessModes
 {
-    ReadWriteOnce
+    ReadWriteOnce,
+    ReadWriteMany
 }

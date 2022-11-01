@@ -11,7 +11,6 @@ using AshersLab.Tools.ArgoWorkflows.Interfaces.Services;
 using AshersLab.Tools.ArgoWorkflows.Kubernetes.Builders;
 using AshersLab.Tools.ArgoWorkflows.Kubernetes.Builders.Workflows;
 using AshersLab.Tools.ArgoWorkflows.Kubernetes.Models;
-using AshersLab.Tools.ArgoWorkflows.Kubernetes.Models.ResourceSpecs.VolumeClaims;
 using AshersLab.Tools.ArgoWorkflows.Services;
 using AshersLab.Tools.ArgoWorkflows.Services.BuildSteps;
 using AshersLab.Tools.ArgoWorkflows.Utilities;
@@ -63,7 +62,7 @@ WorkflowBuilder workflowBuilder = resourceBuilder.SetAsWorkflow()
             .SetName("persistence")
             .Up()
         .SetVolumeClaim()
-            .AddAccessMode(AccessModes.ReadWriteOnce)
+            .AddAccessMode(runConfig.VolumeAccessMode)
             .SetResources(runConfig.PersistentVolumeSize, StorageSizes.Mi)
             .Up()
         .Up();

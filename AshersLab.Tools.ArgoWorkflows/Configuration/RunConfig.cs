@@ -1,3 +1,5 @@
+using AshersLab.Tools.ArgoWorkflows.Kubernetes.Models.ResourceSpecs.VolumeClaims;
+
 namespace AshersLab.Tools.ArgoWorkflows.Configuration;
 
 public class RunConfig
@@ -19,6 +21,7 @@ public class RunConfig
 
     public ImagesConfig? Images { get; set; } = new();
 
-    public int PersistentVolumeSize { get; set; } = 100;
-    public int? MaxParallelism       { get; set; }
+    public int         PersistentVolumeSize { get; set; } = 100;
+    public int?        MaxParallelism       { get; set; }
+    public AccessModes VolumeAccessMode     { get; set; } = AccessModes.ReadWriteMany;
 }
