@@ -24,6 +24,7 @@
         <DockerImageName>asherslab/argo-workflows:latest</DockerImageName>
         <DockerImageName>asherslab/argo-workflows:{{workflow.parameters.hash}}</DockerImageName>
         <DockerPlatform>linux/arm64/v8</DockerPlatform>
+        <DockerPlatform>linux/arm64/v7</DockerPlatform>
         <DockerPlatform>linux/amd64</DockerPlatform>
 
         <DeploymentRepo>git@github.com:Asherslab/k8s.git</DeploymentRepo>
