@@ -43,6 +43,13 @@ public class DockerBuildStepService : IBuildStepService
                 scriptBuilder.Append("apk add docker-credential-ecr-login && ");
             }
 
+            StringBuilder imageNames = new();
+            
+            foreach (string dockerImage in dockerBuildStep.DockerImages)
+            {
+                imageNames.Append($"name={dockerImage},");
+            }
+
             scriptBuilder
                 .Append("buildctl-daemonless.sh ")
                 .Append("build ")
@@ -54,7 +61,7 @@ public class DockerBuildStepService : IBuildStepService
                 .Append($"--opt build-arg:publish=./publish/{project.Name} ")
                 .Append($"--opt build-arg:project=./src/{project.RelativeDirectory} ")
                 .Append(
-                    $"--output type=image,\"name={dockerBuildStep.DockerImages.Aggregate((prev, next) => $"{prev},{next}")}\",push=true"
+                    $"--output type=image,{imageNames}push=true"
                 );
 
             // @formatter:off
