@@ -36,7 +36,7 @@ public class CheckoutBuildStepService : IBuildStepService
                 .SetImage(_runConfig.Images?.Git ?? "alpine/git:v2.32.0")
                 .SetWorkingDirectory("/mnt/persistence/src")
                 .SetCommand("sh", "-c")
-                .AddArgument("echo hash: {{workflow.parameters.hash}} && git checkout {{workflow.parameters.hash}} && git status && ls -l")
+                    .AddArgument("echo hash: {{workflow.parameters.hash}} && git checkout {{workflow.parameters.hash}} && git status && ls -l")
                 .AddVolumeMount("persistence", "/mnt/persistence")
                 .Up();
         // @formatter:on

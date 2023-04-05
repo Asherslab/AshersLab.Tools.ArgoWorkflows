@@ -47,8 +47,7 @@ public class DotnetBuildStepService : IBuildStepService
                 if (!imageBuilder.ToString().Contains(':'))
                     imageBuilder.Append(':').Append(project.TargetFramework.Replace("net", "").Replace("coreapp", "").Replace("standard2.1", "6.0"));
             }
-
-
+            
             // @formatter:off
             workflowBuilder
                 .AddContainerTemplate()

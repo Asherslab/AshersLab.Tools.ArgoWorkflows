@@ -40,10 +40,18 @@ public class ProjectInSolutionHandler : IProjectInSolutionHandler
                 .Select(x => x.EvaluatedValue)
                 .ToList();
 
+            List<string>? platforms = csProject.AllEvaluatedProperties
+                .Where(x => x.Name == "DockerPlatform")
+                .Select(x => x.EvaluatedValue)
+                .ToList();
+
+            if (!platforms.Any())
+                platforms = null;
+
             if (dockerFile != null && File.Exists(Path.Combine(csProject.DirectoryPath, dockerFile)) &&
                 dockerImages.Any())
             {
-                buildSteps.Add(new DockerBuildStep(dockerFile, dockerImages));
+                buildSteps.Add(new DockerBuildStep(dockerFile, dockerImages, platforms));
 
                 string? deploymentRepo             = csProject.GetPropertyValue("DeploymentRepo");
                 string? deploymentRepoDirectory    = csProject.GetPropertyValue("DeploymentRepoDirectory");

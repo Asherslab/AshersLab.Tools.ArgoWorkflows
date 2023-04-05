@@ -24,4 +24,6 @@ public class RunConfig
     public int         PersistentVolumeSize { get; set; } = 100;
     public int?        MaxParallelism       { get; set; }
     public AccessModes VolumeAccessMode     { get; set; } = AccessModes.ReadWriteMany;
+    
+    public bool ECRRegistryLogin { get; set; }
 }

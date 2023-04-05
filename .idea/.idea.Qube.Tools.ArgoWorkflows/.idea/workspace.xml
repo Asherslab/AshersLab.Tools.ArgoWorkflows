@@ -4,19 +4,21 @@
     <projectFile>Qube.Tools.ArgoWorkflows/Qube.Tools.ArgoWorkflows.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc396723-7e55-46ae-bdd1-2d43c7f99ded" name="Changes" comment="add parallelism">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Qube.Tools.ArgoWorkflows/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Qube.Tools.ArgoWorkflows/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AshersLab.Tools.ArgoWorkflows.Kubernetes/Models/ResourceSpecs/VolumeClaims/AccessModes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AshersLab.Tools.ArgoWorkflows.Kubernetes/Models/ResourceSpecs/VolumeClaims/AccessModes.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AshersLab.Tools.ArgoWorkflows/Configuration/RunConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AshersLab.Tools.ArgoWorkflows/Configuration/RunConfig.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AshersLab.Tools.ArgoWorkflows/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AshersLab.Tools.ArgoWorkflows/Program.cs" afterDir="false" />
-    </list>
+    <list default="true" id="fc396723-7e55-46ae-bdd1-2d43c7f99ded" name="Changes" comment="volume access mode" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Users/asherslab/Documents/Git/AshersLab.Tools.ArgoWorkflows/AshersLab.Tools.ArgoWorkflows.Kubernetes/Models/ResourceSpecs/VolumeClaims/AccessModes.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/asherslab/Documents/Git/AshersLab.Tools.ArgoWorkflows/AshersLab.Tools.ArgoWorkflows/Configuration/RunConfig.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/asherslab/Documents/Git/AshersLab.Tools.ArgoWorkflows/AshersLab.Tools.ArgoWorkflows/Configuration/RunConfig.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/asherslab/Documents/Git/AshersLab.Tools.ArgoWorkflows/AshersLab.Tools.ArgoWorkflows/Configuration/RunConfig.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/asherslab/Documents/Git/AshersLab.Tools.ArgoWorkflows/AshersLab.Tools.ArgoWorkflows/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/asherslab/Documents/Git/AshersLab.Tools.ArgoWorkflows/AshersLab.Tools.ArgoWorkflows/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/asherslab/Documents/Git/AshersLab.Tools.ArgoWorkflows/AshersLab.Tools.ArgoWorkflows/Services/BuildSteps/CheckoutBuildStepService.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -91,7 +93,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667292630249</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="volume access mode">
+      <created>1667294395691</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1667294395691</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -115,6 +124,7 @@
     <MESSAGE value="init" />
     <MESSAGE value="fix git secret name" />
     <MESSAGE value="add parallelism" />
-    <option name="LAST_COMMIT_MESSAGE" value="add parallelism" />
+    <MESSAGE value="volume access mode" />
+    <option name="LAST_COMMIT_MESSAGE" value="volume access mode" />
   </component>
 </project>
