@@ -53,6 +53,7 @@ public class VolumeClaimBuilder : NestedBuilder<WorkflowVolumeClaimBuilder>, IBu
             throw new InvalidOperationException("Resources must be set");
 
         return new VolumeClaimSpec(
+            _storageClassName,
             _accessModes,
             _resourcesBuilder.Build()
         );
