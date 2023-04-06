@@ -6,11 +6,18 @@ namespace AshersLab.Tools.ArgoWorkflows.Kubernetes.Builders.VolumeClaims;
 
 public class VolumeClaimBuilder : NestedBuilder<WorkflowVolumeClaimBuilder>, IBuilder<VolumeClaimSpec>
 {
+    private string?                         _storageClassName;
     private ICollection<AccessModes>?       _accessModes;
     private IBuilder<VolumeClaimResources>? _resourcesBuilder;
 
     public VolumeClaimBuilder(WorkflowVolumeClaimBuilder parent) : base(parent)
     {
+    }
+
+    public VolumeClaimBuilder SetStorageClassName(string? storageClassName)
+    {
+        _storageClassName = storageClassName;
+        return this;
     }
 
     public VolumeClaimBuilder AddAccessMode(AccessModes mode)
