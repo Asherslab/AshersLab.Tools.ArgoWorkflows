@@ -58,28 +58,7 @@ public class DotnetBuildStepService : IBuildStepService
                     .AddArgument(
                         nugetSourcesBuilder +
                         $"dotnet restore --packages {_runConfig.PersistenceVolumePath}/nuget {_runConfig.PersistenceVolumePath}/src/{project.RelativeLocation} && " +
-                        $"dotnet publish --no-restore --no-dependencies -c Release -o {_runConfig.PersistenceVolumePath}/publish/{project.Name} {_runConfig.PersistenceVolumePath}/src/{project.RelativeLocation} && " +
-                        
-                        // caching stuff ----
-                        // csproj
-                        $"mkdir -p /new/{project.Name}/ && " +
-                        $"cp -r {_runConfig.PersistenceVolumePath}/src/{project.RelativeLocation} /new/{project.Name} && " +
-                        
-                        // obj
-                        $"mkdir -p /new/{project.Name}/obj/ && " +
-                        $"cp -r {_runConfig.PersistenceVolumePath}/src/{project.RelativeDirectory}/obj/project.assets.json /new/{project.Name}/obj/ && " +
-                        $"cp -r {_runConfig.PersistenceVolumePath}/src/{project.RelativeDirectory}/obj/*.csproj.nuget.* /new/{project.Name}/obj/ && " +
-                        
-                        // bin
-                        $"mkdir -p /new/{project.Name}/bin/Release/{project.TargetFramework}/ && " +
-                        $"cp -r {_runConfig.PersistenceVolumePath}/publish/{project.Name}/* /new/{project.Name}/bin/Release/{project.TargetFramework}/ && " +
-                        
-                        // remove old
-                        $"rm -rf {_runConfig.PersistenceVolumePath}/src/{project.RelativeDirectory} && " +
-                        
-                        // move in new
-                        $"mv /new/{project.Name} {_runConfig.PersistenceVolumePath}/src/{project.RelativeDirectory} && " +
-                        $"ls {_runConfig.PersistenceVolumePath}/src/{project.RelativeDirectory}"
+                        $"dotnet publish --no-restore --no-dependencies -c Release -o {_runConfig.PersistenceVolumePath}/publish/{project.Name} {_runConfig.PersistenceVolumePath}/src/{project.RelativeLocation}"
                     )
                     .AddVolumeMount("persistence", _runConfig.PersistenceVolumePath);
             // @formatter:on
