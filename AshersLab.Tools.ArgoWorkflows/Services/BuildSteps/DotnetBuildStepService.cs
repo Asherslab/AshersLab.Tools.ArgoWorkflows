@@ -58,7 +58,7 @@ public class DotnetBuildStepService : IBuildStepService
                     .AddArgument(
                         nugetSourcesBuilder +
                         // $"dotnet restore --packages {_runConfig.PersistenceVolumePath}/nuget {_runConfig.PersistenceVolumePath}/src/{project.RelativeLocation} && " +
-                        $"dotnet publish --no-restore --no-dependencies -c Release -o {_runConfig.PersistenceVolumePath}/publish/{project.Name} {_runConfig.PersistenceVolumePath}/src/{project.RelativeLocation}"
+                        $"dotnet publish --no-dependencies -c Release -o {_runConfig.PersistenceVolumePath}/publish/{project.Name} {_runConfig.PersistenceVolumePath}/src/{project.RelativeLocation}"
                     )
                     .AddVolumeMount("persistence", _runConfig.PersistenceVolumePath);
             // @formatter:on
