@@ -14,6 +14,9 @@ public class WorkflowSpec : IResourceSpec
     [JsonPropertyName("volumeClaimTemplates")]
     public IEnumerable<WorkflowVolumeClaimTemplate>? VolumeClaimTemplates { get; }
 
+    [JsonPropertyName("volumes")]
+    public IEnumerable<WorkflowVolume>? Volumes { get; }
+
     [JsonPropertyName("templates")]
     public IEnumerable<object> Templates { get; }
     
@@ -24,12 +27,14 @@ public class WorkflowSpec : IResourceSpec
         string                                    entrypoint,
         WorkflowArguments?                        arguments,
         IEnumerable<WorkflowVolumeClaimTemplate>? volumeClaimTemplates,
-        IEnumerable<IWorkflowTemplate>           templates,
-        int? parallelism = null)
+        IEnumerable<WorkflowVolume>?              volumes,
+        IEnumerable<IWorkflowTemplate>            templates,
+        int?                                      parallelism = null)
     {
         Entrypoint = entrypoint;
         Arguments = arguments;
         VolumeClaimTemplates = volumeClaimTemplates;
+        Volumes = volumes;
         Templates = templates;
         Parallelism = parallelism;
     }

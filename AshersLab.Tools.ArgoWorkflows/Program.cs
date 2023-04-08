@@ -55,17 +55,27 @@ KubernetesResourceBuilder resourceBuilder = new KubernetesResourceBuilder()
 WorkflowBuilder workflowBuilder = resourceBuilder.SetAsWorkflow()
     .SetEntrypoint("execute")
     .SetParallelism(runConfig.MaxParallelism)
-    .AddArgumentsParameter("hash", runConfig.TargetHash ?? "")
-    .AddWorkflowVolume()
-        .SetMetadata()
-            .SetName("persistence")
-            .Up()
-        .SetVolumeClaim()
-            .SetStorageClassName(runConfig.StorageClassName)
-            .AddAccessMode(runConfig.VolumeAccessMode)
-            .SetResources(runConfig.PersistentVolumeSize, StorageSizes.Mi)
-            .Up()
-        .Up();
+    .AddArgumentsParameter("hash", runConfig.TargetHash ?? "");
+
+if (runConfig.ExistingPersistentVolume == null)
+{
+    workflowBuilder = workflowBuilder
+        .AddWorkflowVolumeClaim()
+            .SetMetadata()
+                .SetName("persistence")
+                .Up()
+            .SetVolumeClaim()
+                .SetStorageClassName(runConfig.StorageClassName)
+                .AddAccessMode(runConfig.VolumeAccessMode)
+                .SetResources(runConfig.PersistentVolumeSize, StorageSizes.Mi)
+                .Up()
+            .Up();
+}
+else
+{
+    workflowBuilder = workflowBuilder
+        .AddWorkflowVolume("persistence", runConfig.ExistingPersistentVolume);
+}
 // @formatter:on
 
 foreach (IBuildStepService buildStepService in host.Services.GetServices<IBuildStepService>())

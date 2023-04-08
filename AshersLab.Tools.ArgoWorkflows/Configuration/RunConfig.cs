@@ -8,9 +8,10 @@ public class RunConfig
     public string TargetHash   { get; set; }
     public string SourceRepo   { get; set; }
 
-    public string  PersistenceVolumePath { get; set; } = "/mnt/persistence";
-    public string? ToolOutput            { get; set; } //= "/mnt/out/workflow";
-    public string  RepoDirectory         { get; set; } = "/mnt/persistence/src";
+    public string  PersistenceVolumePath    { get; set; } = "/mnt/persistence";
+    public string? ToolOutput               { get; set; } //= "/mnt/out/workflow";
+    public string  RepoDirectory            { get; set; } = "/mnt/persistence/src";
+    public string? ExistingPersistentVolume { get; set; }
 
     public string[]? NugetSources { get; set; }
 
