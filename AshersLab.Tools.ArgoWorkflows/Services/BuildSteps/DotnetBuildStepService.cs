@@ -57,11 +57,27 @@ public class DotnetBuildStepService : IBuildStepService
                     .SetCommand("sh", "-c")
                     .AddArgument(
                         nugetSourcesBuilder +
-                        $"dotnet publish --no-dependencies -c Release -o {_runConfig.PersistenceVolumePath}/publish/{project.Name} {_runConfig.PersistenceVolumePath}/src/{project.RelativeLocation} &&" +
-                        $"mkdir -p {project.Name}/bin/Release/{project.TargetFramework}/ &&" +
+                        $"dotnet restore --packages {_runConfig.PersistenceVolumePath}/nuget &&" +
+                        $"dotnet publish --no-restore --no-dependencies -c Release -o {_runConfig.PersistenceVolumePath}/publish/{project.Name} {_runConfig.PersistenceVolumePath}/src/{project.RelativeLocation} &&" +
+                        
+                        // caching stuff ----
+                        // csproj
+                        $"mkdir -p {project.Name}/ &&" +
                         $"cp {_runConfig.PersistenceVolumePath}/src/{project.RelativeLocation} {project.Name}/ &&" +
+                        
+                        // obj
+                        $"mkdir -p {project.Name}/obj/ &&" +
+                        $"cp {_runConfig.PersistenceVolumePath}/src/{project.RelativeDirectory}/obj/project.assets.json {project.Name}/obj/ &&" +
+                        $"cp {_runConfig.PersistenceVolumePath}/src/{project.RelativeDirectory}/obj/*.csproj.nuget.* {project.Name}/obj/ &&" +
+                        
+                        // bin
+                        $"mkdir -p {project.Name}/bin/Release/{project.TargetFramework}/ &&" +
                         $"cp {_runConfig.PersistenceVolumePath}/publish/{project.Name}/* {project.Name}/bin/Release/{project.TargetFramework}/ &&" +
+                        
+                        // remove old
                         $"rm -rf {_runConfig.PersistenceVolumePath}/src/{project.RelativeDirectory} &&" +
+                        
+                        // move in new
                         $"mv {project.Name} {_runConfig.PersistenceVolumePath}/src/{project.RelativeDirectory}"
                     )
                     .AddVolumeMount("persistence", _runConfig.PersistenceVolumePath);
