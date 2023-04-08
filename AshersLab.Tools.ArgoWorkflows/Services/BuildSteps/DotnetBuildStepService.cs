@@ -33,7 +33,7 @@ public class DotnetBuildStepService : IBuildStepService
                 nugetSourcesBuilder.Append("dotnet nuget remove source nuget.org &&");
                 foreach (string source in _runConfig.NugetSources)
                 {
-                    nugetSourcesBuilder.Append($"dotnet nuget add source {source} &&");
+                    nugetSourcesBuilder.Append($"dotnet nuget add source {source} && ");
                 }
             }
 
@@ -57,28 +57,29 @@ public class DotnetBuildStepService : IBuildStepService
                     .SetCommand("sh", "-c")
                     .AddArgument(
                         nugetSourcesBuilder +
-                        $"dotnet restore --packages {_runConfig.PersistenceVolumePath}/nuget {_runConfig.PersistenceVolumePath}/src/{project.RelativeLocation} &&" +
-                        $"dotnet publish --no-restore --no-dependencies -c Release -o {_runConfig.PersistenceVolumePath}/publish/{project.Name} {_runConfig.PersistenceVolumePath}/src/{project.RelativeLocation} &&" +
+                        $"dotnet restore --packages {_runConfig.PersistenceVolumePath}/nuget {_runConfig.PersistenceVolumePath}/src/{project.RelativeLocation} && " +
+                        $"dotnet publish --no-restore --no-dependencies -c Release -o {_runConfig.PersistenceVolumePath}/publish/{project.Name} {_runConfig.PersistenceVolumePath}/src/{project.RelativeLocation} && " +
                         
                         // caching stuff ----
                         // csproj
-                        $"mkdir -p {project.Name}/ &&" +
-                        $"cp {_runConfig.PersistenceVolumePath}/src/{project.RelativeLocation} {project.Name}/ &&" +
+                        $"mkdir -p /new/{project.Name}/ && " +
+                        $"cp {_runConfig.PersistenceVolumePath}/src/{project.RelativeLocation} {project.Name}/ && " +
                         
                         // obj
-                        $"mkdir -p {project.Name}/obj/ &&" +
-                        $"cp {_runConfig.PersistenceVolumePath}/src/{project.RelativeDirectory}/obj/project.assets.json {project.Name}/obj/ &&" +
-                        $"cp {_runConfig.PersistenceVolumePath}/src/{project.RelativeDirectory}/obj/*.csproj.nuget.* {project.Name}/obj/ &&" +
+                        $"mkdir -p /new/{project.Name}/obj/ && " +
+                        $"cp {_runConfig.PersistenceVolumePath}/src/{project.RelativeDirectory}/obj/project.assets.json {project.Name}/obj/ && " +
+                        $"cp {_runConfig.PersistenceVolumePath}/src/{project.RelativeDirectory}/obj/*.csproj.nuget.* {project.Name}/obj/ && " +
                         
                         // bin
-                        $"mkdir -p {project.Name}/bin/Release/{project.TargetFramework}/ &&" +
-                        $"cp {_runConfig.PersistenceVolumePath}/publish/{project.Name}/* {project.Name}/bin/Release/{project.TargetFramework}/ &&" +
+                        $"mkdir -p /new/{project.Name}/bin/Release/{project.TargetFramework}/ && " +
+                        $"cp {_runConfig.PersistenceVolumePath}/publish/{project.Name}/* {project.Name}/bin/Release/{project.TargetFramework}/ && " +
                         
                         // remove old
-                        $"rm -rf {_runConfig.PersistenceVolumePath}/src/{project.RelativeDirectory} &&" +
+                        $"rm -rf {_runConfig.PersistenceVolumePath}/src/{project.RelativeDirectory} && " +
                         
                         // move in new
-                        $"mv {project.Name} {_runConfig.PersistenceVolumePath}/src/{project.RelativeDirectory}"
+                        $"mv /new/{project.Name} {_runConfig.PersistenceVolumePath}/src/{project.RelativeDirectory} && " +
+                        $"ls {_runConfig.PersistenceVolumePath}/src/{project.RelativeDirectory}"
                     )
                     .AddVolumeMount("persistence", _runConfig.PersistenceVolumePath);
             // @formatter:on
