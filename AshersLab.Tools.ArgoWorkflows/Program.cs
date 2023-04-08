@@ -31,6 +31,7 @@ builder.ConfigureServices(x =>
         .AddTransient<IProjectInSolutionHandler, ProjectInSolutionHandler>()
         .AddTransient<IEntrypointService, DAGEntrypointService>()
         .AddTransient<IBuildStepService, CheckoutBuildStepService>()
+        .AddTransient<IBuildStepService, RestoreBuildStepService>()
         .AddTransient<IBuildStepService, DotnetBuildStepService>()
         .AddTransient<IBuildStepService, DockerBuildStepService>()
         .AddTransient<IBuildStepService, NugetStepService>()

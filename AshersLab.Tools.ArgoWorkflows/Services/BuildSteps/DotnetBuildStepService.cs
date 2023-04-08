@@ -27,16 +27,6 @@ public class DotnetBuildStepService : IBuildStepService
             .Where(x => x.BuildSteps.Any(y => y is DotnetBuildStep));
         foreach (IProject project in projects)
         {
-            StringBuilder nugetSourcesBuilder = new();
-            if (_runConfig.NugetSources != null && _runConfig.NugetSources.Any())
-            {
-                nugetSourcesBuilder.Append("dotnet nuget remove source nuget.org &&");
-                foreach (string source in _runConfig.NugetSources)
-                {
-                    nugetSourcesBuilder.Append($"dotnet nuget add source {source} && ");
-                }
-            }
-
             StringBuilder imageBuilder =
                 new($"mcr.microsoft.com/dotnet/sdk:{project.TargetFramework.Replace("net", "").Replace("coreapp", "").Replace("standard2.1", "6.0")}");
 
@@ -56,9 +46,7 @@ public class DotnetBuildStepService : IBuildStepService
                     .SetImage(imageBuilder.ToString())
                     .SetCommand("sh", "-c")
                     .AddArgument(
-                        nugetSourcesBuilder +
-                        // $"dotnet restore --packages {_runConfig.PersistenceVolumePath}/nuget {_runConfig.PersistenceVolumePath}/src/{project.RelativeLocation} && " +
-                        $"dotnet publish --no-dependencies -c Release -o {_runConfig.PersistenceVolumePath}/publish/{project.Name} {_runConfig.PersistenceVolumePath}/src/{project.RelativeLocation}"
+                        $"dotnet publish --no-restore --no-dependencies -c Release -o {_runConfig.PersistenceVolumePath}/publish/{project.Name} {_runConfig.PersistenceVolumePath}/src/{project.RelativeLocation}"
                     )
                     .AddVolumeMount("persistence", _runConfig.PersistenceVolumePath);
             // @formatter:on
@@ -84,7 +72,7 @@ public class DotnetBuildStepService : IBuildStepService
 
             if (!dependencies.Any())
             {
-                dagTaskBuilder.AddDependency(CheckoutBuildStepService.Name);
+                dagTaskBuilder.AddDependency(RestoreBuildStepService.Name);
                 continue;
             }
 
