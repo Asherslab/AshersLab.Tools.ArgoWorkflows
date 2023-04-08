@@ -63,19 +63,24 @@ public class DotnetBuildStepService : IBuildStepService
                         // caching stuff ----
                         // csproj
                         $"mkdir -p /new/{project.Name}/ && " +
-                        $"cp {_runConfig.PersistenceVolumePath}/src/{project.RelativeLocation} {project.Name}/ && " +
+                        $"cp -r {_runConfig.PersistenceVolumePath}/src/{project.RelativeLocation} {project.Name}/ && " +
+                        "echo 1 && " +
                         
                         // obj
                         $"mkdir -p /new/{project.Name}/obj/ && " +
-                        $"cp {_runConfig.PersistenceVolumePath}/src/{project.RelativeDirectory}/obj/project.assets.json {project.Name}/obj/ && " +
-                        $"cp {_runConfig.PersistenceVolumePath}/src/{project.RelativeDirectory}/obj/*.csproj.nuget.* {project.Name}/obj/ && " +
+                        $"cp -r {_runConfig.PersistenceVolumePath}/src/{project.RelativeDirectory}/obj/project.assets.json {project.Name}/obj/ && " +
+                        "echo 2 && " +
+                        $"cp -r {_runConfig.PersistenceVolumePath}/src/{project.RelativeDirectory}/obj/*.csproj.nuget.* {project.Name}/obj/ && " +
+                        "echo 3 && " +
                         
                         // bin
                         $"mkdir -p /new/{project.Name}/bin/Release/{project.TargetFramework}/ && " +
-                        $"cp {_runConfig.PersistenceVolumePath}/publish/{project.Name}/* {project.Name}/bin/Release/{project.TargetFramework}/ && " +
+                        $"cp -r {_runConfig.PersistenceVolumePath}/publish/{project.Name}/* {project.Name}/bin/Release/{project.TargetFramework}/ && " +
+                        "echo 4 && " +
                         
                         // remove old
                         $"rm -rf {_runConfig.PersistenceVolumePath}/src/{project.RelativeDirectory} && " +
+                        "echo 5 && " +
                         
                         // move in new
                         $"mv /new/{project.Name} {_runConfig.PersistenceVolumePath}/src/{project.RelativeDirectory} && " +
