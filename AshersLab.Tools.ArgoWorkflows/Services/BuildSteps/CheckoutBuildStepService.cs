@@ -27,7 +27,7 @@ public class CheckoutBuildStepService : IBuildStepService
                     .SetPath("/mnt/persistence/src")
                     .SetSpec()
                         .SetIgnoreHostKey()
-                        .SetRepository("{{workflow.parameters.src_repo}}")
+                        .SetRepository(_runConfig.SourceRepo)
                         .SetSshPrivateKeySecret("git-secret", "ssh-privatekey")
                         .Up()
                     .Up()
