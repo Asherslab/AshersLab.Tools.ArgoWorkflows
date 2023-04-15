@@ -27,5 +27,6 @@ public class RunConfig
     public string?     StorageClassName     { get; set; }
     public AccessModes VolumeAccessMode     { get; set; } = AccessModes.ReadWriteMany;
 
-    public bool ECRRegistryLogin { get; set; }
+    public bool   ECRRegistryEnvironmentLogin { get; set; }
+    public string ECRServiceAccountName       { get; set; }
 }

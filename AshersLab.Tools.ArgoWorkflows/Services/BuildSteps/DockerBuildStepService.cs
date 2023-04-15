@@ -38,13 +38,13 @@ public class DockerBuildStepService : IBuildStepService
 
             StringBuilder scriptBuilder = new();
 
-            if (_runConfig.ECRRegistryLogin)
+            if (_runConfig.ECRRegistryEnvironmentLogin || _runConfig.ECRServiceAccountName != null)
             {
                 scriptBuilder.Append("apk add docker-credential-ecr-login && ");
             }
 
             StringBuilder imageNames = new();
-            
+
             foreach (string dockerImage in dockerBuildStep.DockerImages)
             {
                 imageNames.Append($"name={dockerImage},");
@@ -65,16 +65,23 @@ public class DockerBuildStepService : IBuildStepService
                 );
 
             // @formatter:off
-            ContainerBuilder<ContainerTemplateBuilder<WorkflowBuilder>> containerBuilder = workflowBuilder
+            ContainerTemplateBuilder<WorkflowBuilder> containerTemplateBuilder = workflowBuilder
                 .AddContainerTemplate()
                     .SetName($"{Name} {project.Name}")
                     .AddVolume()
                         .SetName("docker-config")
                         .SetSecret("docker-config")
-                        .Up()
+                        .Up();
+            
+            if (_runConfig.ECRServiceAccountName != null)
+            {
+                containerTemplateBuilder.SetServiceAccountName(_runConfig.ECRServiceAccountName);
+            }
+            
+            ContainerBuilder<ContainerTemplateBuilder<WorkflowBuilder>> containerBuilder = containerTemplateBuilder
                     .SetContainer();
             
-            if (_runConfig.ECRRegistryLogin)
+            if (_runConfig.ECRRegistryEnvironmentLogin)
             {
                 containerBuilder
                     .AddEnv()

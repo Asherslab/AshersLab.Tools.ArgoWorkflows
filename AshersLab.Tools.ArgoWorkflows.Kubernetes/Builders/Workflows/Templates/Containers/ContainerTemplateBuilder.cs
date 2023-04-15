@@ -12,6 +12,7 @@ namespace AshersLab.Tools.ArgoWorkflows.Kubernetes.Builders.Workflows.Templates.
 public class ContainerTemplateBuilder<TParent> : NestedBuilder<WorkflowBuilder>, IBuilder<IWorkflowTemplate>
 {
     private string?                                _name;
+    private string?                                _serviceAccountName;
     private IBuilder<TemplateContainer>?           _containerBuilder;
     private IBuilder<TemplateInputs>?              _inputsBuilder;
     private ICollection<IBuilder<TemplateVolume>>? _volumeBuilder;
@@ -23,6 +24,12 @@ public class ContainerTemplateBuilder<TParent> : NestedBuilder<WorkflowBuilder>,
     public ContainerTemplateBuilder<TParent> SetName(string name)
     {
         _name = name;
+        return this;
+    }
+
+    public ContainerTemplateBuilder<TParent> SetServiceAccountName(string serviceAccountName)
+    {
+        _serviceAccountName = serviceAccountName;
         return this;
     }
 
@@ -60,7 +67,8 @@ public class ContainerTemplateBuilder<TParent> : NestedBuilder<WorkflowBuilder>,
             _name.ArgoNormalize(),
             _containerBuilder.Build(),
             _inputsBuilder?.Build(),
-            _volumeBuilder?.Select(x => x.Build())
+            _volumeBuilder?.Select(x => x.Build()),
+            _serviceAccountName
         );
     }
 }

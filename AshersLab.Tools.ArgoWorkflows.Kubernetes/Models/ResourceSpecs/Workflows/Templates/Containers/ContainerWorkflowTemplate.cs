@@ -18,16 +18,21 @@ public class ContainerWorkflowTemplate : IWorkflowTemplate
     [JsonPropertyName("volumes")]
     public IEnumerable<TemplateVolume>? Volumes { get; }
 
+    [JsonPropertyName("serviceAccountName")]
+    public string? ServiceAccountName { get; set; }
+
     public ContainerWorkflowTemplate(
-        string                     name,
-        TemplateContainer          container,
-        TemplateInputs?            inputs  = null,
-        IEnumerable<TemplateVolume>? volumes = null
+        string                       name,
+        TemplateContainer            container,
+        TemplateInputs?              inputs             = null,
+        IEnumerable<TemplateVolume>? volumes            = null,
+        string?                      serviceAccountName = null
     )
     {
         Name = name;
         Container = container;
         Inputs = inputs;
         Volumes = volumes;
+        ServiceAccountName = serviceAccountName;
     }
 }
