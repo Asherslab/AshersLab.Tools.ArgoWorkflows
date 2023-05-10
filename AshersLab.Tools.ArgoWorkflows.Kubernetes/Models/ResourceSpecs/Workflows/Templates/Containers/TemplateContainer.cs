@@ -24,6 +24,9 @@ public class TemplateContainer
 
     [JsonPropertyName("securityContext")]
     public ContainerSecurityContext? SecurityContext { get; }
+    
+    [JsonPropertyName("resources")]
+    public ContainerResources? Resources { get; set; }
 
     public TemplateContainer(
         string                     image,
@@ -32,7 +35,8 @@ public class TemplateContainer
         string?                    workingDirectory         = null,
         IEnumerable<VolumeMount>?  volumeMounts             = null,
         IEnumerable<ContainerEnv>? environmentVariables     = null,
-        ContainerSecurityContext?  containerSecurityContext = null
+        ContainerSecurityContext?  containerSecurityContext = null,
+        ContainerResources? resources = null
     )
     {
         Image = image;
@@ -42,5 +46,6 @@ public class TemplateContainer
         VolumeMounts = volumeMounts;
         EnvironmentVariables = environmentVariables;
         SecurityContext = containerSecurityContext;
+        Resources = resources;
     }
 }

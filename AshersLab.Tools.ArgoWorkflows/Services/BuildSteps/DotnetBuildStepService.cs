@@ -44,6 +44,10 @@ public class DotnetBuildStepService : IBuildStepService
                 .SetName($"{Name} {project.Name}")
                 .SetContainer()
                     .SetImage(imageBuilder.ToString())
+                    .AddResources()
+                        .SetLimits(_runConfig.DotnetBuildMemory, _runConfig.DotnetBuildMemory)
+                        .SetRequests(_runConfig.DotnetBuildMemory, _runConfig.DotnetBuildCpu)
+                        .Up()
                     .SetCommand("sh", "-c")
                     .AddArgument(
                         $"dotnet publish --no-restore --no-dependencies -c Release -o {_runConfig.PersistenceVolumePath}/publish/{project.Name} {_runConfig.PersistenceVolumePath}/src/{project.RelativeLocation}"

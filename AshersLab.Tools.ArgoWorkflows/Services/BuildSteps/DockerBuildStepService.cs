@@ -102,6 +102,10 @@ public class DockerBuildStepService : IBuildStepService
             
             containerBuilder
                 .SetImage(_runConfig.Images?.BuildKit ?? "moby/buildkit:v0.9.1")
+                .AddResources()
+                    .SetLimits(_runConfig.DockerBuildMemory, _runConfig.DockerBuildMemory)
+                    .SetRequests(_runConfig.DockerBuildMemory, _runConfig.DockerBuildMemory)
+                    .Up()
                 .SetCommand("sh", "-c")
                     .AddArgument(scriptBuilder.ToString())
                 .AddVolumeMount("persistence", _runConfig.PersistenceVolumePath)

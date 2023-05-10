@@ -29,4 +29,9 @@ public class RunConfig
 
     public bool   ECRRegistryEnvironmentLogin { get; set; }
     public string ECRServiceAccountName       { get; set; }
+
+    public string? DotnetBuildMemory { get; set; }
+    public string? DotnetBuildCpu    { get; set; }
+    public string? DockerBuildMemory { get; set; }
+    public string? DockerBuildCpu    { get; set; }
 }

@@ -14,6 +14,7 @@ public class ContainerBuilder<TParent> : NestedBuilder<TParent>, IBuilder<Templa
     private ICollection<IBuilder<VolumeMount>>?  _volumeMountBuilders;
     private ICollection<IBuilder<ContainerEnv>>? _envBuilders;
     private IBuilder<ContainerSecurityContext>?  _securityContextBuilder;
+    private IBuilder<ContainerResources?>?       _containerResourcesBuilder; 
 
     public ContainerBuilder(TParent parent) : base(parent)
     {
@@ -83,6 +84,13 @@ public class ContainerBuilder<TParent> : NestedBuilder<TParent>, IBuilder<Templa
         return builder;
     }
 
+    public ContainerResourcesBuilder<ContainerBuilder<TParent>> AddResources()
+    {
+        ContainerResourcesBuilder<ContainerBuilder<TParent>> builder = new(this);
+        _containerResourcesBuilder = builder;
+        return builder;
+    }
+
     public virtual TemplateContainer Build()
     {
         if (_image == null)
@@ -95,7 +103,8 @@ public class ContainerBuilder<TParent> : NestedBuilder<TParent>, IBuilder<Templa
             _workingDirectory,
             _volumeMountBuilders?.Select(x => x.Build()),
             _envBuilders?.Select(x => x.Build()),
-            _securityContextBuilder?.Build()
+            _securityContextBuilder?.Build(),
+            _containerResourcesBuilder?.Build()
         );
     }
 }
