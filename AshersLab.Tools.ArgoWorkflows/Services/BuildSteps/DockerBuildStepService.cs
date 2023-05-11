@@ -103,8 +103,8 @@ public class DockerBuildStepService : IBuildStepService
             containerBuilder
                 .SetImage(_runConfig.Images?.BuildKit ?? "moby/buildkit:v0.9.1")
                 .AddResources()
-                    .SetLimits(_runConfig.DockerBuildMemory, _runConfig.DockerBuildMemory)
-                    .SetRequests(_runConfig.DockerBuildMemory, _runConfig.DockerBuildMemory)
+                    .SetLimits(_runConfig.DockerBuildMemory, _runConfig.DockerBuildCpu)
+                    .SetRequests(_runConfig.DockerBuildMemory, _runConfig.DockerBuildCpu)
                     .Up()
                 .SetCommand("sh", "-c")
                     .AddArgument(scriptBuilder.ToString())
