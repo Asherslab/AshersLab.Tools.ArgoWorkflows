@@ -111,6 +111,7 @@ public class DockerBuildStepService : IBuildStepService
                 .AddVolumeMount("persistence", _runConfig.PersistenceVolumePath)
                 .AddVolumeMount("docker-config", "/.docker")
                 .AddEnv("DOCKER_CONFIG", "/.docker")
+                .AddEnv("BUILDCTL_CONNECT_RETRIES_MAX", "100")
                 .AddSecurityContext()
                     .SetPrivileged();
             // @formatter:on
