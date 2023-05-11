@@ -1,4 +1,5 @@
 using AshersLab.Tools.ArgoWorkflows.Kubernetes.Models.ResourceSpecs.VolumeClaims;
+using AshersLab.Tools.ArgoWorkflows.Kubernetes.Models.ResourceSpecs.Workflows;
 
 namespace AshersLab.Tools.ArgoWorkflows.Configuration;
 
@@ -34,4 +35,7 @@ public class RunConfig
     public string? DotnetBuildCpu    { get; set; }
     public string? DockerBuildMemory { get; set; }
     public string? DockerBuildCpu    { get; set; }
+
+    public WorkflowToleration[]?       Tolerations  { get; set; }
+    public Dictionary<string, string>? NodeSelector { get; set; }
 }

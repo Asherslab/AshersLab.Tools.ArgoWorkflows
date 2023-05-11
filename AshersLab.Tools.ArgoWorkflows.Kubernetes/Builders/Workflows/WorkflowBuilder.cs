@@ -18,6 +18,9 @@ public class WorkflowBuilder : NestedBuilder<KubernetesResourceBuilder>, IBuilde
     private ICollection<IBuilder<IWorkflowTemplate>>?           _workflowTemplateBuilders;
     private int?                                                _parallelism;
 
+    private ICollection<WorkflowToleration>? _tolerations;
+    private IDictionary<string, string>?     _nodeSelector;
+
     public WorkflowBuilder(KubernetesResourceBuilder parent) : base(parent)
     {
     }
@@ -98,6 +101,28 @@ public class WorkflowBuilder : NestedBuilder<KubernetesResourceBuilder>, IBuilde
         return builder;
     }
 
+    public WorkflowBuilder AddToleration(
+        string key,
+        string @operator,
+        string value,
+        string effect
+    )
+    {
+        _tolerations ??= new List<WorkflowToleration>();
+        _tolerations.Add(new WorkflowToleration(key, @operator, value, effect));
+        return this;
+    }
+
+    public WorkflowBuilder AddNodeSelector(
+        string key,
+        string value
+    )
+    {
+        _nodeSelector = new Dictionary<string, string>();
+        _nodeSelector[key] = value;
+        return this;
+    }
+
     public IResourceSpec Build()
     {
         if (_entrypoint == null)
@@ -120,7 +145,9 @@ public class WorkflowBuilder : NestedBuilder<KubernetesResourceBuilder>, IBuilde
             _workflowVolumeClaimBuilders?.Select(x => x.Build()),
             _workflowVolumeBuilders?.Select(x => x.Build()),
             workflowTemplates,
-            _parallelism
+            _parallelism,
+            _tolerations,
+            _nodeSelector
         );
     }
 }

@@ -11,6 +11,7 @@ using AshersLab.Tools.ArgoWorkflows.Interfaces.Services;
 using AshersLab.Tools.ArgoWorkflows.Kubernetes.Builders;
 using AshersLab.Tools.ArgoWorkflows.Kubernetes.Builders.Workflows;
 using AshersLab.Tools.ArgoWorkflows.Kubernetes.Models;
+using AshersLab.Tools.ArgoWorkflows.Kubernetes.Models.ResourceSpecs.Workflows;
 using AshersLab.Tools.ArgoWorkflows.Services;
 using AshersLab.Tools.ArgoWorkflows.Services.BuildSteps;
 using AshersLab.Tools.ArgoWorkflows.Utilities;
@@ -57,6 +58,29 @@ WorkflowBuilder workflowBuilder = resourceBuilder.SetAsWorkflow()
     .SetEntrypoint("execute")
     .SetParallelism(runConfig.MaxParallelism)
     .AddArgumentsParameter("hash", runConfig.TargetHash ?? "");
+
+if (runConfig.Tolerations != null)
+{
+    foreach (WorkflowToleration toleration in runConfig.Tolerations)
+    {
+        workflowBuilder = workflowBuilder
+            .AddToleration(
+                    toleration.Key,
+                    toleration.Operator,
+                    toleration.Value,
+                    toleration.Effect
+                );
+    }
+}
+
+if (runConfig.NodeSelector != null)
+{
+    foreach ((string key, string value) in runConfig.NodeSelector)
+    {
+        workflowBuilder = workflowBuilder
+            .AddNodeSelector(key, value);
+    }
+}
 
 if (runConfig.ExistingPersistentVolume == null)
 {
