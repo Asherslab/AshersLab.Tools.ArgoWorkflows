@@ -38,7 +38,7 @@ public class DockerBuildStepService : IBuildStepService
 
             StringBuilder scriptBuilder = new();
 
-            if (_runConfig.ECRRegistryEnvironmentLogin || _runConfig.ECRServiceAccountName != null)
+            if (_runConfig.InstallECRLoginTools)
             {
                 scriptBuilder.Append("apk add docker-credential-ecr-login && ");
             }
