@@ -29,7 +29,7 @@ public class WorkflowToleration
         Effect = effect;
     }
 
-    protected WorkflowToleration()
+    public WorkflowToleration()
     {
         Key = null!;
         Operator = null!;
