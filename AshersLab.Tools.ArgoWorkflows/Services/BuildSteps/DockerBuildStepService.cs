@@ -111,7 +111,6 @@ public class DockerBuildStepService : IBuildStepService
                 .AddVolumeMount("persistence", _runConfig.PersistenceVolumePath)
                 .AddVolumeMount("docker-config", "/.docker")
                 .AddEnv("DOCKER_CONFIG", "/.docker")
-                .AddEnv("BUILDKITD_FLAGS", "--oci-worker-no-process-sandbox")
                 .AddSecurityContext()
                     .SetPrivileged();
             // @formatter:on
