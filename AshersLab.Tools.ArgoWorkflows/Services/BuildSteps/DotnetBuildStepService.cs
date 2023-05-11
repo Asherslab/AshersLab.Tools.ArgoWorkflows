@@ -46,7 +46,7 @@ public class DotnetBuildStepService : IBuildStepService
                     .SetImage(imageBuilder.ToString())
                     .AddResources()
                         .SetLimits(_runConfig.DotnetBuildMemory, _runConfig.DotnetBuildMemory)
-                        .SetRequests(_runConfig.DotnetBuildMemory, _runConfig.DotnetBuildCpu)
+                        .SetRequests(_runConfig.DotnetBuildCpu, _runConfig.DotnetBuildCpu)
                         .Up()
                     .SetCommand("sh", "-c")
                     .AddArgument(
