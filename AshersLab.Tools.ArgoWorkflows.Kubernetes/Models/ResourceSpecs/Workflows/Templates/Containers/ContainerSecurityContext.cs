@@ -7,12 +7,8 @@ public class ContainerSecurityContext
     [JsonPropertyName("privileged")]
     public bool Privileged { get; }
 
-    [JsonPropertyName("seLinuxOptions")]
-    public SeLinuxOptions? SeLinuxOptions { get; set; }
-
-    public ContainerSecurityContext(bool privileged = false, SeLinuxOptions? seLinuxOptions = null)
+    public ContainerSecurityContext(bool privileged = false)
     {
         Privileged = privileged;
-        SeLinuxOptions = seLinuxOptions;
     }
 }

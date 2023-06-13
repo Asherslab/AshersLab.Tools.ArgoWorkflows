@@ -28,7 +28,7 @@ public class RunConfig
     public string?     StorageClassName     { get; set; }
     public AccessModes VolumeAccessMode     { get; set; } = AccessModes.ReadWriteMany;
 
-    public bool   InstallECRLoginTools        { get; set; }
+    public bool   InstallECRLoginTools { get; set; }
     public bool   ECRRegistryEnvironmentLogin { get; set; }
     public string ECRServiceAccountName       { get; set; }
 
@@ -36,8 +36,6 @@ public class RunConfig
     public string? DotnetBuildCpu    { get; set; }
     public string? DockerBuildMemory { get; set; }
     public string? DockerBuildCpu    { get; set; }
-
-    public string? DockerBuildSeLinuxType { get; set; }
 
     public WorkflowToleration[]?       Tolerations  { get; set; }
     public Dictionary<string, string>? NodeSelector { get; set; }

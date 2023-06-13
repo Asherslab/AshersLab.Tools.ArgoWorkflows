@@ -113,8 +113,7 @@ public class DockerBuildStepService : IBuildStepService
                 .AddEnv("DOCKER_CONFIG", "/.docker")
                 .AddEnv("BUILDCTL_CONNECT_RETRIES_MAX", "100")
                 .AddSecurityContext()
-                    .SetPrivileged()
-                    .SetSeLinuxType(_runConfig.DockerBuildSeLinuxType);
+                    .SetPrivileged();
             // @formatter:on
         }
     }

@@ -6,8 +6,7 @@ namespace AshersLab.Tools.ArgoWorkflows.Kubernetes.Builders.Workflows.Templates;
 
 public class ContainerSecurityContextBuilder<TParent> : NestedBuilder<TParent>, IBuilder<ContainerSecurityContext>
 {
-    private bool    _privileged;
-    private string? _seLinuxType;
+    private bool _privileged;
     
     public ContainerSecurityContextBuilder(TParent parent) : base(parent)
     {
@@ -19,14 +18,8 @@ public class ContainerSecurityContextBuilder<TParent> : NestedBuilder<TParent>, 
         return this;
     }
 
-    public ContainerSecurityContextBuilder<TParent> SetSeLinuxType(string? type)
-    {
-        _seLinuxType = type;
-        return this;
-    }
-
     public ContainerSecurityContext Build()
     {
-        return new ContainerSecurityContext(_privileged, _seLinuxType == null ? null : new SeLinuxOptions(_seLinuxType));
+        return new ContainerSecurityContext(_privileged);
     }
 }
